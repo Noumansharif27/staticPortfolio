@@ -18,48 +18,6 @@ let hoverElements = document.querySelectorAll(".hover-element");
 //   });
 // });
 
-function smoothScroll() {
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
-
-  const locoScroll = new LocomotiveScroll({
-    el: document.querySelector("#main"),
-    smooth: true,
-  });
-  // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-  locoScroll.on("scroll", ScrollTrigger.update);
-
-  // tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
-  ScrollTrigger.scrollerProxy("#main", {
-    scrollTop(value) {
-      return arguments.length
-        ? locoScroll.scrollTo(value, 0, 0)
-        : locoScroll.scroll.instance.scroll.y;
-    }, // we don't have to define a scrollLeft because we're only scrolling vertically.
-    getBoundingClientRect() {
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    },
-    // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-    pinType: document.querySelector("#main").style.transform
-      ? "transform"
-      : "fixed",
-  });
-
-  // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
-  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-
-  // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-  ScrollTrigger.refresh();
-}
-
-// smoothScroll();
-
 function reveal() {
   revealText.forEach((el) => {
     // creating new spans
@@ -105,15 +63,12 @@ function animatinOne() {
       },
       "a"
     )
-    .to(
-      "#green-div",
-      {
-        height: 0,
-        duration: 1.1,
-        ease: "Circ.easeInOut",
-      },
-      "a"
-    )
+    .to("#green-div", {
+      height: 0,
+      duration: 1.5,
+      delay: -0.6,
+      ease: "Power4.easeOut",
+    })
     .to(nav, {
       opacity: 1,
       delay: -1.5,
@@ -159,32 +114,32 @@ animatinOne();
 function animationtwo() {
   let tl = gsap.timeline({
     scrollTrigger: {
-      trigger: "#home",
+      trigger: "#main",
       scrub: 2,
-      start: "-150% 100%",
-      end: "bottom 150%",
+      start: "top 150%",
+      end: "bottom 450%",
     },
   });
 
-  gsap.set(".para p", {
+  gsap.set(".para p, .para span", {
     y: "100%",
   });
 
   gsap.to(".para p", {
     y: "0%",
-    duration: 0.5,
+    duration: 0.4,
     stagger: 0.3,
     scrollTrigger: {
-      trigger: "#home",
-      start: "-20% 100%",
-      end: "bottom 150%",
+      trigger: "#main",
+      start: "top top",
+      end: "bottom 50%",
     },
   });
 
   tl.to(
     "#cards .card-1",
     {
-      rotate: "-20",
+      rotate: "-10",
       right: "45%",
       duration: 100,
       ease: "Circ.easeInOut",
@@ -207,7 +162,7 @@ function animationtwo() {
       "#cards .card-3",
       {
         rotate: "0",
-        right: "25%",
+        right: "23%",
         duration: 100,
         ease: "Power3.easeInOut",
         delay: "-1",
@@ -216,30 +171,30 @@ function animationtwo() {
     );
 }
 
-// gsap;
-
 animationtwo();
 
 let initilizePath = `M 100 40 Q 500 40 1100 40`;
 let finalPath = `M 100 40 Q 500 40 1100 40`;
 function pageOneSVG() {
-  let page1 = document.querySelector("#page-1");
-  page1.addEventListener("mousemove", (details) => {
-    initilizePath = `M 200 40 Q ${details.x} ${details.y} 1150 40`;
+  let svgLineAaffect = document.querySelectorAll("#svg-line-affect");
+  svgLineAaffect.forEach((el) => {
+    el.addEventListener("mousemove", (details) => {
+      initilizePath = `M 200 40 Q ${details.x} ${details.y - 50} 1150 40`;
 
-    console.log(details.y);
-    gsap.to("svg path", {
-      attr: { d: initilizePath },
-      duration: 2,
-      ease: "Power3.out(1,0.2)",
+      console.log(details.y);
+      gsap.to("svg path", {
+        attr: { d: initilizePath },
+        duration: 1,
+        ease: "Power3.out(1,0.2)",
+      });
     });
-  });
 
-  page1.addEventListener("mouseleave", (details) => {
-    gsap.to("svg path", {
-      attr: { d: finalPath },
-      duration: 1.5,
-      ease: "elastic.out(1,0.2)",
+    el.addEventListener("mouseleave", (details) => {
+      gsap.to("svg path", {
+        attr: { d: finalPath },
+        duration: 1,
+        ease: "elastic.out(1,0.2)",
+      });
     });
   });
 }
