@@ -8,9 +8,9 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-color: var(--primary-color);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   overflow-x: hidden;
+  position: relative;
 }
 
 :root {
@@ -23,15 +23,27 @@ body {
 #main {
   width: 100vw;
   overflow-x: hidden;
+  position: relative;
 }
+
+/* #cursor {
+  pointer-events: none;
+  height: 1vw;
+  width: 1vw;
+  background-color: navy;
+  border-radius: 50%;
+  position: absolute;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
+  z-index: 1;
+} */
 
 #loader {
   /* display: none; */
   width: 100%;
   height: 100vh;
   background-color: var(--loader-bg-color);
-  color: var(--primary-color);
-  position: relative;
+  color: #fcfaf8;
+  position: absolute;
   overflow: hidden;
 }
 
@@ -52,6 +64,7 @@ body {
   position: relative;
   width: 100vw;
   padding-left: 32%;
+  pointer-events: none;
 }
 
 #upper-text {
@@ -62,19 +75,23 @@ body {
 }
 
 #upper-text h3 {
+  pointer-events: none;
   font-size: 0.7rem;
   width: 8.5%;
   margin: 0 auto;
   line-height: 0.95rem;
   font-weight: 100;
+  color: var(--primary-color);
 }
 
 #loader h1 {
+  pointer-events: none;
   font-size: 3.5rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: var(--primary-color);
 }
 
 h1 .green {
@@ -113,10 +130,19 @@ h1 .green {
 
 #nav a {
   text-decoration: none;
-  color: #383838;
+  color: var(--secondary-text-color);
   font-size: 0.75rem;
   text-transform: uppercase;
   position: relative;
+}
+
+.anchorLine {
+  height: 200px;
+  width: 250%;
+  position: absolute;
+  background-color: #fff;
+  bottom: 0;
+  z-index: 1;
 }
 
 .anchorLine {
@@ -151,39 +177,51 @@ h1 .green {
 #home #content {
   width: 100%;
   height: 33%;
-  padding: 8% 4% 0;
+  padding: 10% 4% 3%;
   color: var(--secondary-text-color);
+  /* overflow: hidden; */
 }
 
 #content-row-1 {
   width: 100%;
   height: 45%;
+  overflow: hidden;
+  /* background-color: mediumseagreen; */
 }
+
+/* #content-row-1 .childSpan {
+  height: -100%;
+} */
 
 #content-row-1 h2 {
   font-size: 13vw;
   font-weight: 500;
   position: relative;
+  pointer-events: none;
+  transform: rotateX(270deg);
+  transform-origin: 100% 100%;
 }
 
 #content-para-1 {
   width: 15%;
   position: absolute;
-  top: 12%;
+  top: 30%;
   right: 22%;
   font-size: 0.85vw;
   opacity: 0.5;
   line-height: 1vw;
+  pointer-events: none;
 }
 
 #content-para-2 {
   width: 10%;
   position: absolute;
-  top: 12%;
+  top: 30%;
   right: 5%;
   font-size: 0.8vw;
   opacity: 0.5;
   line-height: 1vw;
+  pointer-events: none;
 }
 
 #content-row-2 {
@@ -192,11 +230,13 @@ h1 .green {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  pointer-events: none;
+  /* background-color: #14cf93; */
 }
 
 #icon {
   width: 5%;
-  height: 32%;
+  height: 38%;
   background-color: #e6e5e3;
   border-radius: 50%;
   display: flex;
@@ -217,6 +257,10 @@ h1 .green {
   font-size: 13vw;
   font-weight: 500;
   position: relative;
+  pointer-events: none;
+  transform: rotateX(270deg);
+  transform-origin: 100% 100%;
+  /* opacity: 0; */
 }
 
 #content-row-2 h3 {
@@ -224,6 +268,7 @@ h1 .green {
   font-weight: 500;
   color: var(--span-text-color);
   font-style: italic;
+  pointer-events: none;
 }
 
 #project-images {
@@ -237,7 +282,6 @@ h1 .green {
   position: absolute;
   left: 5%;
   top: 30%;
-  overflow: hidden;
 }
 
 #project-images #about-para p {
@@ -263,7 +307,9 @@ h1 .green {
   width: 70%;
   height: 75%;
   position: absolute;
-  right: -8%;
+  right: -5%;
+  background-color: #14cf93;
+  transition: filter cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
 }
 
 .card {
@@ -274,35 +320,124 @@ h1 .green {
 }
 
 #cards .card-1 {
-  background-image: url(./assets/card1..png);
-  background-size: cover;
-  background-position: center;
   top: 0;
   transform: rotate(-20deg);
   right: 50%;
+  overflow: hidden;
+  transition: filter cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
+}
+
+.card-1 img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
   filter: grayscale();
+  border-radius: 2rem;
+  transition: filter cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
+}
+
+.card-1 img:hover {
+  filter: grayscale(0);
 }
 
 #cards .card-2 {
-  background-image: url(./assets/card2.png);
-  background-size: cover;
-  background-position: center;
-  top: 18%;
+  top: 10%;
   right: 40%;
   transform: rotate(-15deg);
+  overflow: hidden;
+}
+
+.card-2 img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
   filter: grayscale();
+  border-radius: 2rem;
+  transition: filter cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
+}
+
+.card-2 img:hover {
+  filter: grayscale(0);
 }
 
 #cards .card-3 {
-  background-image: url(./assets/card3.png);
-  background-size: cover;
-  background-position: center;
-  top: 30%;
+  top: 20%;
   right: 30%;
-  transform: rotate(-11deg);
-  filter: grayscale();
+  transform: rotate(-5deg);
+  overflow: hidden;
 }
 
-.card-1:hover {
-  filter: grayscale(-10);
+.card-3 img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale();
+  transition: filter cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
+  border-radius: 2rem;
+}
+
+.card-3 img:hover {
+  filter: grayscale(0);
+}
+
+#exprience-techologies {
+  position: absolute;
+  bottom: 5%;
+  left: 15%;
+}
+
+#hero-para {
+  width: 30%;
+  font-size: 0.8vw;
+  line-height: 1vw;
+  opacity: 0.5;
+}
+
+#technologies-para {
+  width: 45%;
+  font-size: 1.5vw;
+  margin-top: 2rem;
+}
+
+#page-1 {
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 88;
+}
+path {
+  z-index: 88;
+}
+
+#page-2 {
+  height: 200vh;
+  width: 100vw;
+  background-color: tomato;
+}
+
+#page-2-title {
+  display: flex;
+  gap: 1rem;
+  padding: 4% 17%;
+}
+
+#page-2-title h2 {
+  font-size: 8vw;
+  font-weight: 540;
+}
+
+#page-2-title h2 span {
+  color: var(--span-text-color);
+}
+
+#page-2-title h2 sub {
+  font-size: 1.5vw;
+}
+
+#projects {
+  width: 100%;
+  height: 85%;
+  background-color: mediumaquamarine;
 }

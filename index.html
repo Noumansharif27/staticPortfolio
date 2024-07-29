@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nouman Sharif &mdash; Web Developer</title>
-    <link
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
       rel="stylesheet"
-    />
+    /> -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- =========cursorFolower=========== -->
+    <div id="cursor"></div>
+
     <!-- =============Nav============== -->
     <nav id="nav">
       <a href="#"
@@ -23,8 +26,9 @@
         <span class="anchorLine anchorLine-1"></span>
         <span class="anchorLine anchorLine-2"></span>
       </a>
-      <a href="#"
-        >Socials
+      <a href="#" id="social">
+        <div class="social-dropdown"></div>
+        Socials
         <span class="anchorLine anchorLine-1"></span>
         <span class="anchorLine anchorLine-2"></span>
       </a>
@@ -38,6 +42,7 @@
 
     <!-- =======main-content=============== -->
     <main id="main">
+      <!-- ========loader========= -->
       <section id="loader">
         <div id="upper-text">
           <h3 class="reveal">DESIGN PORTFOLIO &copy; 2024</h3>
@@ -50,21 +55,28 @@
           <span class="h1-span">a</span>
         </h1>
       </section>
+
+      <!-- ==========greenScreen============ -->
       <section id="green-div"></section>
+
+      <!-- ============mainPage============ -->
       <section id="home">
         <div id="content">
           <div id="content-row-1">
-            <h2>Creative</h2>
+            <h2 class="frame">
+              <span>C</span><span>r</span><span>e</span><span>a</span
+              ><span>t</span><span>i</span><span>v</span><span>e</span>
+            </h2>
             <div id="content-row-1-para">
               <p id="content-para-1">
                 CURRENTLY AVAILABLE FOR FREELANCE WORLDWID
               </p>
-
               <p id="content-para-2">MY LOCAL TIME 23:08 GMT (+5:30)</p>
             </div>
           </div>
+
           <div id="content-row-2">
-            <div id="icon">
+            <div class="reveal" id="icon">
               <img src="./assets/back-arrow.svg" alt="" />
             </div>
             <div id="text-content">
@@ -76,9 +88,9 @@
 
         <div id="project-images">
           <div id="about-para">
-            <span class="para"><p>I AM NOUMAN SHARIF, I</p></span>
+            <span class="para"><p>I AM NOUMAN SHARIF,</p></span>
             <span class="para">
-              <p>CREATE</p>
+              <p>I CREATE</p>
             </span>
             <span class="para">
               <p><span>Unconventional</span> YET</p>
@@ -93,19 +105,56 @@
               <p>INTERFACES FOR THE</p>
             </span>
             <span class="para">
-              <p>WEB</p>
+              <p>WEB.</p>
             </span>
           </div>
 
           <div id="cards">
-            <div class="card card-1"></div>
-            <div class="card card-2"></div>
-            <div class="card card-3"></div>
+            <div class="card card-1">
+              <img src="./assets/card1..png" alt="" />
+            </div>
+            <div class="card card-2">
+              <img src="./assets/card2.png" alt="" />
+            </div>
+            <div class="card card-3">
+              <img src="./assets/card3.png" alt="" />
+            </div>
           </div>
+        </div>
+
+        <div id="exprience-techologies">
+          <p id="hero-para">THINGS I CAN HELP YOU WITH.</p>
+
+          <p id="technologies-para">
+            WEB / UI&UX / BRANDING / FRONT-END DEVELOPMENT
+          </p>
         </div>
       </section>
 
-      <div id="page-1"></div>
+      <section id="page-1">
+        <svg width="1200" height="200">
+          <path
+            d="M 100 40 Q 500 40 1100 40"
+            stroke="black"
+            fill="transparent"
+          ></path>
+        </svg>
+      </section>
+
+      <section id="page-2">
+        <div id="page-2-title">
+          <h2>Feat</h2>
+          <h2>Wo<span>r</span>ks <sub>(05)</sub></h2>
+        </div>
+
+        <div id="projects">
+          <aside id="project-1">
+            <a href="https://noumansharif27.github.io/Get-TALA/"
+              ><img src="./assets/project-1.png" alt=""
+            /></a>
+          </aside>
+        </div>
+      </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
