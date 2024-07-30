@@ -41,7 +41,7 @@ body {
 }
 
 #loader {
-  /* display: none; */
+  display: none;
   width: 100%;
   height: 100vh;
   background-color: var(--loader-bg-color);
@@ -93,7 +93,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-47%, -50%);
   color: var(--primary-color);
 }
 
@@ -104,7 +104,7 @@ h1 .green {
 }
 
 #green-div {
-  /* display: none; */
+  display: none;
   height: 200vh;
   width: 100%;
   background-color: var(--span-text-color);
@@ -128,7 +128,7 @@ h1 .green {
   position: fixed;
   top: 0;
   z-index: 999;
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 #nav a {
@@ -230,23 +230,23 @@ h1 .green {
 
 #content-row-2 {
   width: 100%;
-  height: 45%;
+  height: 60%;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   pointer-events: none;
-  /* background-color: #3d66c5; */
+  overflow: hidden;
   position: relative;
 }
 
 #icon {
-  width: 5%;
+  width: 7%;
   height: 35%;
   background-color: #e6e5e3;
   border-radius: 50%;
   display: flex;
   position: absolute;
-  bottom: 5%;
+  bottom: 20%;
 }
 
 #icon img {
@@ -320,7 +320,6 @@ h1 .green {
   height: 75%;
   position: absolute;
   right: -5%;
-  /* background-color: #14cf93; */
   transition: filter cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
 }
 
@@ -329,6 +328,7 @@ h1 .green {
   width: 45%;
   border-radius: 2rem;
   position: absolute;
+  transition: all cubic-bezier(0, 0.89, 0.41, 1) 0.5s;
 }
 
 #cards .card-1 {
@@ -419,21 +419,22 @@ h1 .green {
   position: relative;
 }
 
-#technologies-para .tech-para-parent-span {
+/* #technologies-para .tech-para-parent-span {
   height: 100%;
   width: 100%;
   background-color: #1436cf;
-  /* overflow: hidden; */
-  /* position: relative; */
+  overflow: hidden;
+  position: relative;
 }
 
 #technologies-para .tech-para-child-span {
   height: 100%;
   width: 100%;
   background-color: #14cf93;
-  top: 50%;
-  /* position: absolute; */
-}
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+} */
 
 #svg-line-affect {
   height: 10vh;
@@ -444,6 +445,7 @@ h1 .green {
   z-index: 88;
   background-color: #14cf93;
 }
+
 path {
   z-index: 88;
 }
@@ -649,6 +651,8 @@ path {
 .relative {
   position: relative;
   z-index: 2;
+  cursor: pointer;
+  transition: all cubic-bezier(0, 0.89, 0.41, 1) 0.5s;
 }
 
 .absolute {
@@ -719,7 +723,10 @@ path {
   white-space: nowrap;
   position: absolute;
   top: 30%;
+  top: -100%;
   background-color: #fff;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .project-details .year-span {
@@ -735,10 +742,132 @@ path {
   white-space: nowrap;
   position: absolute;
   background-color: #fff;
+  top: -100%;
+  opacity: 0;
+  cursor: pointer;
 }
 
 footer {
   height: 90vh;
   width: 100vw;
   background-color: #dadada;
+}
+
+.project-preview {
+  width: 25svw;
+  height: 50svh;
+  /* background-color: green; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.project-preview header {
+  height: 15%;
+  width: 100%;
+  /* background-color: #14cf93; */
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 1rem;
+  gap: 1rem;
+}
+
+header .cursor-seat {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  /* background-color: #fff; */
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.agency-info {
+  width: 40%;
+  height: 80%;
+  background-color: #fff;
+  border-radius: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#images {
+  height: 30svh;
+  width: 100%;
+  /* background-color: black; */
+  margin-top: 1rem;
+}
+
+#images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 0;
+  position: absolute;
+  opacity: 0;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+  /* animation: bannerImgAnimation 4s ease-in infinite; */
+}
+
+.preview-1 {
+  animation: bannerImgAnimation 3s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+  animation-name: bannerImgAnimation;
+  animation-delay: 1s;
+}
+
+.preview-2 {
+  animation: bannerImgAnimation 3s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+  animation-name: bannerImgAnimation;
+  animation-delay: 2s;
+}
+
+.preview-3 {
+  animation: bannerImgAnimation 3s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+  animation-name: bannerImgAnimation;
+  animation-delay: 3s;
+}
+
+.preview-4 {
+  animation: bannerImgAnimation 3s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+  animation-name: bannerImgAnimation;
+  animation-delay: 4s;
+}
+
+.preview-5 {
+  animation: bannerImgAnimation 3s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+  animation-name: bannerImgAnimation;
+  animation-delay: 5s;
+}
+
+@keyframes bannerImgAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  21% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
