@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nouman Sharif &mdash; Web Developer</title>
-    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
   </head>
   <body>
     <!-- =============Nav============== -->
@@ -41,12 +46,12 @@
           <h3 class="reveal">DESIGN PORTFOLIO &copy; 2024</h3>
         </div>
 
-        <h1 class="reveal">
-          <span class="h1-span">Nouman</span>
-          <span class="green h1-span">Sharif</span>
-          <span class="h1-span">is</span>
-          <span class="h1-span">a</span>
-        </h1>
+        <span class="loader-parent">
+          <span class="child-span-1">Nouman</span>
+          <span class="green child-span-2">Sharif</span>
+          <span class="child-span-3">is</span>
+          <span class="child-span-4">a</span>
+        </span>
       </section>
 
       <!-- ==========greenScreen============ -->
@@ -128,7 +133,7 @@
 
       <!-- =============svg-line-affect============= -->
       <section id="svg-line-affect">
-        <svg width="1200" height="200">
+        <svg width="1200" height="00">
           <path
             d="M 100 40 Q 500 40 1100 40"
             stroke="black"
@@ -141,7 +146,7 @@
       <section id="page-1">
         <div id="page-1-title">
           <h2>Feat</h2>
-          <h2>Wo<span>r</span>ks <sub>(05)</sub></h2>
+          <h2>Wo<span class="green">r</span>ks <sub>(05)</sub></h2>
         </div>
 
         <!-- ===========projects-anchors============ -->
@@ -457,16 +462,95 @@
     </main>
 
     <footer>
+      <div class="footer-container">
+        <div id="footer-heading">
+          <h2>
+            <span>LET'S TALK</span> <span>ABOUT THE NEXT</span>
+            <span>BIG THING</span>
+          </h2>
+        </div>
+
+        <div id="footer-buttons">
+          <a
+            href="mailto:noumansharifgul@gmail.com"
+            class="footer-btn footer-mail-btn"
+            >Write a Message
+            <div class="button-bg"></div>
+          </a>
+          <a class="footer-btn project-menu footer-mail-btn">
+            <div class="button-bg"></div>
+            Discuss Project
+          </a>
+        </div>
+
+        <div class="socials">
+          <a href="#" class="social-account threads">
+            <div class="social-content">
+              <div class="social-account-id">
+                <h4>GitHub</h4>
+                <h6 class="account-id">@noumansharif27</h6>
+              </div>
+              <div class="social-icon">
+                <img
+                  src="./assets/nouman.me_twitter.svg"
+                  alt="nouman.me__github"
+                />
+              </div>
+            </div>
+
+            <div class="social-hover-gb"></div>
+          </a>
+          <a href="#" class="social-account threads">
+            <div class="social-content">
+              <div class="social-account-id">
+                <h4>Instagram</h4>
+                <h6 class="account-id">@noumansharif27</h6>
+              </div>
+              <div class="social-icon">
+                <img
+                  src="./assets/nouman.me_insta.svg"
+                  alt="nouman.me__isntagram"
+                />
+              </div>
+            </div>
+
+            <div class="social-hover-gb"></div>
+          </a>
+          <a href="#" class="social-account threads">
+            <div class="social-content">
+              <div class="social-account-id">
+                <h4>Threads</h4>
+                <h6 class="account-id">@noumansharif27</h6>
+              </div>
+              <div class="social-icon">
+                <img
+                  src="./assets/nouman.me_insta.svg"
+                  alt="nouman.me__threads"
+                />
+              </div>
+            </div>
+
+            <div class="social-hover-gb"></div>
+          </a>
+          <a href="#" class="social-account threads">
+            <div class="social-content">
+              <div class="social-account-id">
+                <h4>GitHub</h4>
+                <h6 class="account-id">@noumansharif27</h6>
+              </div>
+              <div class="social-icon">
+                <img
+                  src="./assets/nouman.me_insta.svg"
+                  alt="nouman.me__github"
+                />
+              </div>
+            </div>
+
+            <div class="social-hover-gb"></div>
+          </a>
+        </div>
+      </div>
       <!-- =============svg-line-affect============= -->
-      <section id="svg-line-affect">
-        <svg width="1200" height="200">
-          <path
-            d="M 100 40 Q 500 40 1100 40"
-            stroke="black"
-            fill="transparent"
-          ></path>
-        </svg>
-      </section>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
@@ -483,5 +567,6 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="app.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
