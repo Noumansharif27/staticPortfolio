@@ -38,6 +38,15 @@ body {
   border-radius: 50px;
 }
 
+.cursor {
+  width: 2vw;
+  height: 2vw;
+  background-color: var(--span-text-color);
+  position: absolute;
+  z-index: 99;
+  border-radius: 50%;
+}
+
 #main {
   width: 100vw;
   overflow-x: hidden;
@@ -121,6 +130,7 @@ body {
   gap: 1rem;
   pointer-events: none;
   font-size: 3rem;
+  font-weight: 560;
 }
 
 #loader .loader-parent span:nth-child(2) {
@@ -347,7 +357,6 @@ body {
   overflow: hidden;
   height: 2.3vw;
   width: 20vw;
-  background-color: #0b8961;
 }
 
 .para p {
@@ -451,7 +460,6 @@ body {
   width: 20rem;
   /* height: 15rem;
   width: 20rem; */
-  background-color: mediumslateblue;
   overflow: hidden;
 }
 
@@ -952,29 +960,48 @@ footer {
   width: 70%;
   text-align: center;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 1rem;
   position: relative;
   /* top: 25%;
-  left: 50%;
+  left: 35%;
   transform: translate(-50%, -50%); */
   overflow: hidden;
-  background-color: #0b8961;
+  /* background-color: #0b8961; */
 }
 
 #footer-heading h2 {
-  position: absolute;
+  /* position: absolute; */
   width: 85%;
-
   font-size: 6vw;
   font-weight: 550;
-  top: 150%;
+  /* top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
-#footer-heading h2 span {
-  background-color: #0f0;
+#footer-heading h2 .footer-parent-span {
+  width: 100%;
+  margin-top: 0.5rem;
   display: block;
+  /* background-color: #0b8961; */
+  /* position: relative; */
+  transform: translate(10%, 0);
+  height: 4.5rem;
+  overflow: hidden;
+}
+
+#footer-heading h2 .footer-child-span {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: block;
+  height: 100%;
+  /* background-color: #0b3189; */
+
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  transform: translate(0, 500%);
 }
 
 #footer-buttons {

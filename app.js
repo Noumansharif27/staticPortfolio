@@ -45,6 +45,18 @@ function smoothScroll() {
 
 // smoothScroll();
 
+// window.addEventListener("mousemove", (details) => {
+//   // let cursor = (document.querySelector(
+//   //   ".cursor"
+//   // ).style.transform = `translate(${details.clientX}, ${details.clientY})`);
+//   gsap.to(".cursor", {
+//     x: `${details.clientX - 10}px`,
+//     y: `${details.clientY - 10}px`,
+//     duration: 0.3,
+//     ease: "elastc.InOut(1,0.2)",
+//   });
+// });
+
 // creating spans
 function reveal() {
   revealText.forEach((el) => {
@@ -73,10 +85,10 @@ function animatinOne() {
     ".loader-parent .child-span-1 ",
     {
       delay: 0.3,
-      left: "70%",
+      left: "70.5%",
       opacity: 1,
       stagger: 0.5,
-      duration: 2,
+      duration: 1,
       ease: "Expo.easeInOut",
     },
     "loader-animation"
@@ -85,10 +97,10 @@ function animatinOne() {
       ".loader-parent .child-span-2 ",
       {
         delay: 0.5,
-        left: "82.5%",
+        left: "83.5%",
         opacity: 1,
         stagger: 0.5,
-        duration: 2,
+        duration: 1,
         ease: "Expo.easeInOut",
       },
       "loader-animation"
@@ -97,10 +109,10 @@ function animatinOne() {
       ".loader-parent .child-span-3 ",
       {
         delay: 0.8,
-        left: "93.5%",
+        left: "94%",
         opacity: 1,
         stagger: 0.5,
-        duration: 2,
+        duration: 1,
         ease: "Expo.easeInOut",
       },
       "loader-animation"
@@ -108,11 +120,11 @@ function animatinOne() {
     .to(
       ".loader-parent .child-span-4 ",
       {
-        delay: 1,
-        left: "97%",
+        delay: 0.8,
+        left: "98%",
         opacity: 1,
         stagger: 0.5,
-        duration: 2,
+        duration: 1,
         ease: "Expo.easeInOut",
       },
       "loader-animation"
@@ -187,6 +199,9 @@ function animatinOne() {
         top: "13%",
         duration: 2,
         delay: 0.3,
+        onComplete: () => {
+          animationtwo();
+        },
       },
       "content"
     );
@@ -199,13 +214,8 @@ function animationtwo() {
       scrollar: "#home",
       scrub: 2,
       start: "30% 40%",
-      end: "150% 50%",
-      // markers: true,
+      end: "200% 80%",
     },
-  });
-
-  gsap.set(".para p, .para span", {
-    y: "100%",
   });
 
   gsap.to(
@@ -216,9 +226,9 @@ function animationtwo() {
       stagger: 0.3,
       scrollTrigger: {
         trigger: ".para p",
-        start: "80% 50%",
-        end: "100% bottom",
-        markers: true,
+        scrollar: "#home",
+        start: "top 100%",
+        end: "150% 80%",
       },
     },
     "card"
@@ -276,6 +286,22 @@ function animationtwo() {
       },
       "card"
     );
+  // .to(
+  //   ".para p",
+  //   {
+  //     y: 0,
+  //     duration: 0.4,
+  //     stagger: 0.3,
+  //     // scrollTrigger: {
+  //     //   trigger: ".para p",
+  //     //   scrollar: "#home",
+  //     //   // start: "top 100%",
+  //     //   // end: "150% 80%",
+  //     //   markers: true,
+  //     // },
+  //   },
+  //   "card"
+  // );
 }
 
 // svg's affects
@@ -447,8 +473,13 @@ function projectCardAnimations() {
     });
   }
 
+  function cardMovingAnimation() {
+    const tl = gsap.timeline();
+  }
+
   projectsCardsHover();
   projectPreviewAffect();
+  cardMovingAnimation();
 }
 
 // project page animation
@@ -470,7 +501,6 @@ function footerAnimation() {
     );
     footerButtons.forEach((btn) => {
       btn.addEventListener("mousemove", (details) => {
-        console.log(details);
         let buttonBg = details.target.querySelector(".button-bg");
         buttonBg.style.opacity = 1;
         buttonBg.style.width = "100%";
@@ -484,7 +514,6 @@ function footerAnimation() {
       });
 
       btn.addEventListener("mouseleave", (details) => {
-        console.log(details);
         let buttonBg = details.target.querySelector(".button-bg");
         buttonBg.style.opacity = 0;
         btn.style.color = "#fff";
@@ -500,31 +529,33 @@ function footerAnimation() {
     });
   }
 
-  // function footerSocialsAnimation() {
-  //   let socialContent = document.querySelectorAll(".social-content");
-  //   socialAccount.forEach((account) => {
-  //     account.addEventListener("mousemove", (details) => {
-  //       console.log("hhi");
-  //       let socialHoverGb = details.target.querySelector(".social-hover-gb");
-  //       socialHoverGb.style.height = "100%";
-  //     });
-  //   });
-  // }
+  function footerSocialsAnimation() {
+    let socialContent = document.querySelectorAll(".social-content");
+    socialAccount.forEach((account) => {
+      account.addEventListener("mousemove", (details) => {
+        console.log("hhi");
+        let socialHoverGb = details.target.querySelector(".social-hover-gb");
+        socialHoverGb.style.height = "100%";
+      });
+    });
+  }
 
   function footerTextAnimation() {
     let footerHeading = document.querySelector("#footer-heading h2");
     clutter = footerHeading.innerHTML;
     // footerHeading.innerHTML = "";
     // footerHeading.innerHTML = `<span>LET'S TALK</span> <span>ABOUT THE NEXT</span> <span>BIG THING</span>`;
-    gsap.to("#footer-heading span ", {
-      top: "45%",
+    gsap.to("#footer-heading h2 .footer-child-span", {
+      // transform: "translate(0, 50%)",
+      y: "-5%",
       stagger: 0.3,
-      ease: "power4.easeOut",
+      ease: "Ease.easeOut",
       scrollTrigger: {
-        trigger: "#footer-heading span ",
-        // markers: true,
-        start: "50% top",
-        end: "50% bottom",
+        trigger: "#footer-heading h2 .footer-child-span ",
+        scrollar: "#footer",
+        markers: true,
+        start: "-2100% 80%",
+        end: "-1800% 50%",
       },
     });
   }
@@ -535,8 +566,7 @@ function footerAnimation() {
 
 reveal();
 animatinOne();
-animationtwo();
 pageOneSVG();
 projectCardAnimations();
-footerAnimation();
 projectPageAnimation();
+footerAnimation();
