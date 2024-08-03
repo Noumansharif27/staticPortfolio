@@ -17,6 +17,7 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   overflow-x: hidden;
   position: relative;
+  background-color: #fcfaf8;
 }
 
 :root {
@@ -38,16 +39,7 @@ body {
   border-radius: 50px;
 }
 
-.cursor {
-  width: 2vw;
-  height: 2vw;
-  background-color: var(--span-text-color);
-  position: absolute;
-  z-index: 99;
-  border-radius: 50%;
-}
-
-#main {
+.scrollContainer {
   width: 100vw;
   overflow-x: hidden;
   position: relative;
@@ -288,7 +280,7 @@ body {
   pointer-events: none;
   overflow: hidden;
   position: relative;
-  background-color: var(--secondary-text-color);
+  background-color: #fcfaf8;
 }
 
 #icon {
@@ -520,14 +512,17 @@ path {
   gap: 1rem;
   padding: 4% 17%;
   position: relative;
+  overflow: hidden;
+  height: 10rem;
 }
 
-#main #page-1-title h2 {
+.scrollContainer #page-1-title h2 {
   font-weight: 540;
   position: relative;
-  /* margin: 5rem 10rem 5rem 0; */
-  /* background-color: #0f0; */
   font-size: 9vw;
+  transform-origin: 0 50%;
+  transform: rotate(30deg);
+  top: 100%;
 }
 
 #page-1-title h2 sub {
@@ -1012,7 +1007,7 @@ footer {
 #footer-buttons .footer-btn {
   padding: 2.31vw 9.5vw;
   background-color: transparent;
-  margin: 0 2rem;
+  margin: 0 2dvw;
   border-radius: 10rem;
   border: 1px solid var(--secondary-text-color);
   text-decoration: none;
@@ -1021,6 +1016,7 @@ footer {
   font-weight: 560;
   position: relative;
   z-index: 2;
+  cursor: pointer;
 }
 
 .button-bg {
@@ -1041,6 +1037,7 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 0 2rem;
+  position: relative;
 }
 
 .footer-container .social-account {
@@ -1050,6 +1047,7 @@ footer {
   text-align: start;
   margin-top: 4rem;
   position: relative;
+  /* transform: translateY(150%); */
 }
 
 .social-content {
@@ -1079,7 +1077,7 @@ footer {
 }
 
 footer a {
-  text-decoration: none;
+  cursor: pointer;
 }
 
 .social-account-id {
@@ -1106,6 +1104,96 @@ footer a {
   z-index: 1;
   position: absolute;
   top: 0;
-  /* opacity: 0; */
   transition: all ease-in-out 0.2s;
+}
+
+#technology-detail {
+  height: 20dvh;
+  width: 100dvw;
+  background-color: #fcfaf8;
+  position: absolute;
+  bottom: 0;
+  padding: 2vw 5vw;
+  display: flex;
+  opacity: 0;
+  z-index: 8;
+  transition: opacity ease-in 0.1s;
+}
+
+.footer-project-details {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.footer-project-details a {
+  color: #000;
+  text-decoration: underline;
+  font-size: 1.8dvw;
+  padding-right: 0.5dvw;
+}
+
+.footer-project-details p {
+  font-size: 1.2dvw;
+}
+
+.technologies {
+  margin-right: 4dvw;
+}
+
+.font {
+  margin: 0 4dvw;
+}
+
+.developer-details {
+  margin-left: 4dvw;
+}
+
+.close-btn {
+  height: 4dvw;
+  width: 4dvw;
+  background-color: #14cf93;
+  border-radius: 50%;
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translate(0, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.close-btn img {
+  height: 30%;
+  width: 30%;
+  cursor: pointer;
+}
+
+.footer-slogen {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  color: #8b9d9b;
+  margin-top: 7dvw;
+  font-size: 1dvw;
+  z-index: 888;
+  position: relative;
+  transition: none;
+}
+
+.footer-slogen a {
+  /* text-decoration: underline; */
+  color: #8b9d9b85;
+  font-size: 1dvw;
+  cursor: pointer;
+}
+
+#credits {
+  cursor: pointer;
+}
+
+.footer-slogen p {
+  display: inline-block;
 }

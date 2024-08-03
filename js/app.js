@@ -9,14 +9,14 @@ function smoothScroll() {
   // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
 
   const locoScroll = new LocomotiveScroll({
-    el: document.querySelector("#main"),
+    el: document.querySelector(".scrollContainer"),
     smooth: true,
   });
   // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
   locoScroll.on("scroll", ScrollTrigger.update);
 
-  // tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
-  ScrollTrigger.scrollerProxy("#main", {
+  // tell ScrollTrigger to use these proxy methods for the ".scrollContainer" element since Locomotive Scroll is hijacking things
+  ScrollTrigger.scrollerProxy(".scrollContainer", {
     scrollTop(value) {
       return arguments.length
         ? locoScroll.scrollTo(value, 0, 0)
@@ -31,7 +31,7 @@ function smoothScroll() {
       };
     },
     // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-    pinType: document.querySelector("#main").style.transform
+    pinType: document.querySelector(".scrollContainer").style.transform
       ? "transform"
       : "fixed",
   });
@@ -43,19 +43,7 @@ function smoothScroll() {
   ScrollTrigger.refresh();
 }
 
-// smoothScroll();
-
-// window.addEventListener("mousemove", (details) => {
-//   // let cursor = (document.querySelector(
-//   //   ".cursor"
-//   // ).style.transform = `translate(${details.clientX}, ${details.clientY})`);
-//   gsap.to(".cursor", {
-//     x: `${details.clientX - 10}px`,
-//     y: `${details.clientY - 10}px`,
-//     duration: 0.3,
-//     ease: "elastc.InOut(1,0.2)",
-//   });
-// });
+smoothScroll();
 
 // creating spans
 function reveal() {
@@ -209,15 +197,6 @@ function animatinOne() {
 
 // Home page's card and para animation
 function animationtwo() {
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      scrollar: "#home",
-      scrub: 2,
-      start: "30% 40%",
-      end: "200% 80%",
-    },
-  });
-
   gsap.to(
     ".para p",
     {
@@ -225,83 +204,64 @@ function animationtwo() {
       duration: 0.4,
       stagger: 0.3,
       scrollTrigger: {
-        trigger: ".para p",
-        scrollar: "#home",
-        start: "top 100%",
-        end: "150% 80%",
+        trigger: ".para",
+        scroller: ".scrollContainer",
+        start: "50% bottom",
+        end: "50% top",
       },
     },
     "card"
   );
 
-  tl.to(
+  gsap.to(
     "#cards .card-1",
     {
       rotate: "-10",
       right: "45%",
-      duration: 3,
       ease: "Power4.easeInOut",
-      // delay: "-1",
-      // scrollTrigger: {
-      //   trigger: "#cards .card-1",
-      //   scrub: 2,
-      //   markers: true,
-      //   start: "10% 20%",
-      //   end: "30% 50%",
-      // },
+      scrollTrigger: {
+        trigger: "#cards",
+        scroller: ".scrollContainer",
+        scrub: 5,
+        start: "40% 40%",
+        end: "70% bottom",
+      },
     },
     "card"
-  )
-    .to(
-      "#cards .card-2",
-      {
-        rotate: "-5",
-        right: "35%",
-        duration: 3,
-        ease: "Power4.easeInOut",
-        // delay: "-1",
-        // scrollTrigger: {
-        //   trigger: "#home",
-        //   scrub: 2,
-        //   start: "10% 20%",
-        //   end: "30% 50%",
-        // },
+  );
+  gsap.to(
+    "#cards .card-2",
+    {
+      rotate: "-5",
+      right: "35%",
+      ease: "Power4.easeInOut",
+      scrollTrigger: {
+        trigger: "#cards",
+        scroller: ".scrollContainer",
+        scrub: 5,
+        start: "40% 40%",
+        end: "70% bottom",
       },
-      "card"
-    )
-    .to(
-      "#cards .card-3",
-      {
-        rotate: "0",
-        right: "23%",
-        duration: 3,
-        ease: "Power4.easeInOut",
-        // delay: "-1",
-        // scrollTrigger: {
-        //   trigger: "#main",
-        //   scrub: 2,
-        //   start: "10% 20%",
-        //   end: "30% 50%",
-        // },
+    },
+    "card"
+  );
+  gsap.to(
+    "#cards .card-3",
+    {
+      rotate: "0",
+      right: "23%",
+      // duration: 3,
+      ease: "Power4.easeInOut",
+      scrollTrigger: {
+        trigger: "#cards",
+        scroller: ".scrollContainer",
+        scrub: 5,
+        start: "40% 40%",
+        end: "70% bottom",
       },
-      "card"
-    );
-  // .to(
-  //   ".para p",
-  //   {
-  //     y: 0,
-  //     duration: 0.4,
-  //     stagger: 0.3,
-  //     // scrollTrigger: {
-  //     //   trigger: ".para p",
-  //     //   scrollar: "#home",
-  //     //   // start: "top 100%",
-  //     //   // end: "150% 80%",
-  //     //   markers: true,
-  //     // },
-  //   },
-  //   "card"
-  // );
+    },
+    "card"
+  );
 }
 
 // svg's affects
@@ -313,7 +273,6 @@ function pageOneSVG() {
     el.addEventListener("mousemove", (details) => {
       initilizePath = `M 200 40 Q ${details.x + 50} ${details.y - 100} 1150 40`;
 
-      console.log(details.y);
       gsap.to("svg path", {
         attr: { d: initilizePath },
         duration: 1,
@@ -334,8 +293,10 @@ function pageOneSVG() {
 function projectCardAnimations() {
   // project card's button hover affect
   function projectsCardsHover() {
+    // selecting all the button's parent
     let projectCards = document.querySelectorAll(".project-card");
     projectCards.forEach((currentCard, details) => {
+      //  for the current parent makes its children button apper from above with getting opacity=1;
       currentCard.addEventListener("mouseenter", (details) => {
         currentCard.style.filter = "grayscale()";
         // console.log(currentCard.childNodes[3].childNodes[1]);
@@ -365,6 +326,7 @@ function projectCardAnimations() {
         );
       });
 
+      // reversing the above affect
       currentCard.addEventListener("mouseleave", (details) => {
         currentCard.style.filter = "grayscale(0)";
 
@@ -415,21 +377,21 @@ function projectCardAnimations() {
         // let Xaxis = `${details.clientX - 100}px`;
         // let Yaxis = `${details.clientY - 100}px`;
 
-        // .to(
-        //   projectPreview,
-        //   {
-        //     opacity: 1,
-        //     x: Xaxis,
-        //     y: Yaxis,
-        //     ease: "Power3.easeOut",
-        //     duration: 1,
-        //   },
-        //   "a"
-        // );
-        // .to(
+        gsap.to(
+          projectPreview,
+          {
+            opacity: 1,
+            x: Xaxis,
+            y: Yaxis,
+            ease: "Power3.easeOut",
+            duration: 1,
+          },
+          "a"
+        );
+        // gsap.to(
         //   cursorSeat,
         //   {
-        //     x: xaxis,
+        //     x: Xaxis,
         //     y: Yaxis,
         //     ease: "Power3.easeOut",
         //     duration: 1,
@@ -439,43 +401,35 @@ function projectCardAnimations() {
       });
 
       currentCard.addEventListener("mouseleave", (details) => {
-        console.log("it is also working");
-
-        let projectPreview =
-          details.target.querySelectorAll(".project-preview");
+        let projectPreview = details.target.querySelector(".project-preview");
         projectPreview.style.opacity = "0";
-        // let xaxis = `${details.clientX - 200}px`;
-        // let Yaxis = `${details.clientY - 300}px`;
-        let tl = gsap.timeline();
 
-        // .to(
-        //   projectPreview,
-        //   {
-        //     opacity: 0,
-        //     x: xaxis,
-        //     y: Yaxis,
-        //     ease: "Power3.easeOut",
-        //     duration: 1,
-        //   },
-        //   "a"
-        // );
-        // .to(
-        //   cursorSeat,
-        //   {
-        //     x: xaxis,
-        //     y: Yaxis,
-        //     ease: "Power3.easeOut",
-        //     duration: 1,
-        //   },
-        //   "a"
-        // );
+        gsap.to(
+          projectPreview,
+          {
+            opacity: 0,
+            x: xaxis,
+            y: Yaxis,
+            ease: "Power3.easeOut",
+            duration: 1,
+          },
+          "a"
+        );
+        gsap.to(
+          cursorSeat,
+          {
+            x: xaxis,
+            y: Yaxis,
+            ease: "Power3.easeOut",
+            duration: 1,
+          },
+          "a"
+        );
       });
     });
   }
 
-  function cardMovingAnimation() {
-    const tl = gsap.timeline();
-  }
+  function cardMovingAnimation() {}
 
   projectsCardsHover();
   projectPreviewAffect();
@@ -484,84 +438,120 @@ function projectCardAnimations() {
 
 // project page animation
 function projectPageAnimation() {
-  gsap.to("#page-1-text", {
-    y: 0,
+  gsap.to("#page-1-title h2", {
+    top: "0%",
+    rotate: 0,
     ease: "Power4.easeOut",
+    scrub: 2,
+
     stagger: 0.2,
+    duration: 2,
     scrollTrigger: {
       trigger: "#page-1-text",
+      scroller: ".scrollContainer",
+      start: "230% 50%",
+      end: "350% bottom",
     },
   });
 }
 
 function footerAnimation() {
   function footerButtonAnimation() {
+    // Selecting all footer buttons
     let footerButtons = document.querySelectorAll(
       "#footer-buttons .footer-btn  "
     );
     footerButtons.forEach((btn) => {
+      // for each button make it's background white as well as it's text black
       btn.addEventListener("mousemove", (details) => {
         let buttonBg = details.target.querySelector(".button-bg");
         buttonBg.style.opacity = 1;
         buttonBg.style.width = "100%";
+        buttonBg.style.height = "100%";
 
         btn.style.color = "#000";
-        // gsap.to(btn.children, {
-        //   backgroundColor: "#fff  ",
-        //   // height: "100%",
-        //   ease: "Power4",
-        // });
+        btn.style.border = "none";
       });
 
+      // reverse the upper affect
       btn.addEventListener("mouseleave", (details) => {
         let buttonBg = details.target.querySelector(".button-bg");
         buttonBg.style.opacity = 0;
         btn.style.color = "#fff";
         buttonBg.style.width = "50%";
-
-        // gsap.to(buttonBg, {
-        //   backgroundColor: "#fff  ",
-        //   width: 0,
-        //   opacity: 0,
-        //   ease: "Power4",
-        // });
+        buttonBg.style.height = "100%";
+        btn.style.border = "1px solid var(--secondary-text-color)";
       });
     });
   }
 
   function footerSocialsAnimation() {
-    let socialContent = document.querySelectorAll(".social-content");
+    // selecting all the social icons
+    let socialAccount = document.querySelectorAll(".socials .social-account");
+
+    // for each social icon give its background colored element a height to apply the affect as well ad give some padding on left and right side of the content
     socialAccount.forEach((account) => {
-      account.addEventListener("mousemove", (details) => {
-        console.log("hhi");
-        let socialHoverGb = details.target.querySelector(".social-hover-gb");
-        socialHoverGb.style.height = "100%";
+      account.addEventListener("mouseenter", (details) => {
+        let socialHoverBg = details.target.querySelector(".social-hover-gb");
+        let socialContent = details.target.querySelector(".social-content");
+
+        socialHoverBg.style.height = "100%";
+        account.style.borderTop = "1px solid transparent";
+        socialContent.style.padding = "0 1dvw";
+      });
+
+      // reverse the above affect
+      account.addEventListener("mouseleave", (details) => {
+        let socialHoverBg = details.target.querySelector(".social-hover-gb");
+        let socialContent = details.target.querySelector(".social-content");
+
+        socialHoverBg.style.height = "0";
+        account.style.borderTop = "1px solid #fff";
+        socialContent.style.padding = "0";
       });
     });
   }
 
   function footerTextAnimation() {
     let footerHeading = document.querySelector("#footer-heading h2");
-    clutter = footerHeading.innerHTML;
-    // footerHeading.innerHTML = "";
-    // footerHeading.innerHTML = `<span>LET'S TALK</span> <span>ABOUT THE NEXT</span> <span>BIG THING</span>`;
+
+    // animating the footer hero heading
     gsap.to("#footer-heading h2 .footer-child-span", {
-      // transform: "translate(0, 50%)",
-      y: "-5%",
+      y: "-8%",
       stagger: 0.3,
-      ease: "Ease.easeOut",
+      ease: "Power4.easeOut",
       scrollTrigger: {
-        trigger: "#footer-heading h2 .footer-child-span ",
-        scrollar: "#footer",
-        markers: true,
-        start: "-2100% 80%",
-        end: "-1800% 50%",
+        trigger: "#footer-heading",
+        scroller: ".scrollContainer",
+        start: "-500% 50%",
+        end: "-400% bottom",
       },
+    });
+  }
+
+  function technologiesDetails() {
+    // give opacity=1; to the element after a slected element is clicked
+    let projectCredits = document.querySelector("#project-credits");
+    let technologyDetails = document.querySelector("#technology-detail");
+    let footerSloge = document.querySelector(".footer-slogen");
+
+    projectCredits.addEventListener("click", () => {
+      technologyDetails.style.opacity = 1;
+      footerSloge.style.zIndex = 2;
+    });
+
+    // get the opacity=1; return after the selected element is clicked
+    let closeBtn = document.querySelector(".close-btn");
+    closeBtn.addEventListener("click", () => {
+      technologyDetails.style.opacity = "0";
+      footerSloge.style.zIndex = 88;
     });
   }
 
   footerButtonAnimation();
   footerTextAnimation();
+  footerSocialsAnimation();
+  technologiesDetails();
 }
 
 reveal();
