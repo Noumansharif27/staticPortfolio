@@ -97,7 +97,7 @@ function animatinOne() {
       ".loader-parent .child-span-3 ",
       {
         delay: 0.8,
-        left: "94%",
+        left: "95%",
         opacity: 1,
         stagger: 0.5,
         duration: 1,
