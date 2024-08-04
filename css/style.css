@@ -29,14 +29,12 @@ body {
   --icon-color: #e6e5e3;
 }
 
-::-webkit-scrollbar {
-  /* width: 6px; */
-  display: none;
-}
+/* ::-webkit-scrollbar-thumb {
+} */
 
-::-webkit-scrollbar-thumb {
+.c-scrollbar .c-scrollbar_thumb {
   background: #14cf93;
-  border-radius: 50px;
+  opacity: 1;
 }
 
 .scrollContainer {
@@ -85,8 +83,8 @@ body {
 
 #upper-text h3 {
   pointer-events: none;
-  font-size: 0.8vw;
-  width: 8.5%;
+  font-size: 1vw;
+  width: 10%;
   margin: 0 auto;
   line-height: 1vw;
   font-weight: 100;
@@ -522,7 +520,7 @@ path {
   font-size: 9vw;
   transform-origin: 0 50%;
   transform: rotate(30deg);
-  top: 100%;
+  top: 80%;
 }
 
 #page-1-title h2 sub {

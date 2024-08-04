@@ -271,7 +271,7 @@ function pageOneSVG() {
   let svgLineAaffect = document.querySelectorAll("#svg-line-affect");
   svgLineAaffect.forEach((el) => {
     el.addEventListener("mousemove", (details) => {
-      initilizePath = `M 200 40 Q ${details.x + 50} ${details.y - 100} 1150 40`;
+      initilizePath = `M 200 40 Q ${details.x + 50} ${details.y} 1150 40`;
 
       gsap.to("svg path", {
         attr: { d: initilizePath },
@@ -290,6 +290,8 @@ function pageOneSVG() {
   });
 }
 
+let page1 = document.querySelector("#page-1");
+
 function projectCardAnimations() {
   // project card's button hover affect
   function projectsCardsHover() {
@@ -299,9 +301,11 @@ function projectCardAnimations() {
       //  for the current parent makes its children button apper from above with getting opacity=1;
       currentCard.addEventListener("mouseenter", (details) => {
         currentCard.style.filter = "grayscale()";
-        // console.log(currentCard.childNodes[3].childNodes[1]);
+        // console.log(details.target.dataset);
         let projectYearBtn = details.target.querySelector(".year-span");
         let projectRoleBtn = details.target.querySelector(".role-span");
+        console.log(details.target.dataset.color);
+        page1.style.backgroundColor = "details.target.dataset.color";
 
         let tl = gsap.timeline();
 
@@ -317,7 +321,7 @@ function projectCardAnimations() {
         ).to(
           projectRoleBtn,
           {
-            top: "27%",
+            top: "30%",
             opacity: 1,
             ease: "Power3.easeOut",
             duration: 1.5,
@@ -365,6 +369,7 @@ function projectCardAnimations() {
     let projectCards = document.querySelectorAll(".project-card");
     projectCards.forEach((currentCard) => {
       currentCard.addEventListener("mousemove", (details) => {
+        console.log(details);
         let projectPreview = details.target.querySelector(".project-preview");
         projectPreview.style.opacity = 1;
         // projectPreview.style.transform = `translate(${
@@ -432,14 +437,14 @@ function projectCardAnimations() {
   function cardMovingAnimation() {}
 
   projectsCardsHover();
-  projectPreviewAffect();
+  // projectPreviewAffect();
   cardMovingAnimation();
 }
 
 // project page animation
 function projectPageAnimation() {
   gsap.to("#page-1-title h2", {
-    top: "0%",
+    top: "-20%",
     rotate: 0,
     ease: "Power4.easeOut",
     scrub: 2,
@@ -466,11 +471,11 @@ function footerAnimation() {
       btn.addEventListener("mousemove", (details) => {
         let buttonBg = details.target.querySelector(".button-bg");
         buttonBg.style.opacity = 1;
-        buttonBg.style.width = "100%";
+        buttonBg.style.width = "101%";
         buttonBg.style.height = "100%";
 
         btn.style.color = "#000";
-        btn.style.border = "none";
+        // btn.style.border = "none";
       });
 
       // reverse the upper affect
@@ -480,7 +485,7 @@ function footerAnimation() {
         btn.style.color = "#fff";
         buttonBg.style.width = "50%";
         buttonBg.style.height = "100%";
-        btn.style.border = "1px solid var(--secondary-text-color)";
+        // btn.style.border = "1px solid var(--secondary-text-color)";
       });
     });
   }
@@ -517,7 +522,7 @@ function footerAnimation() {
 
     // animating the footer hero heading
     gsap.to("#footer-heading h2 .footer-child-span", {
-      y: "-8%",
+      y: "-17%",
       stagger: 0.3,
       ease: "Power4.easeOut",
       scrollTrigger: {
