@@ -126,15 +126,15 @@ function animatinOne() {
       },
       "loader-hidden-animation"
     )
-    .to(
-      ".childSpan",
-      {
-        y: "-100%",
-        duration: 1.5,
-        ease: "Expo.easeInOut",
-      },
-      "loader-hidden-animation"
-    )
+    // .to(
+    //   ".childSpan",
+    //   {
+    //     y: "-100%",
+    //     duration: 1.5,
+    //     ease: "Expo.easeInOut",
+    //   },
+    //   "loader-hidden-animation"
+    // )
     .to(
       "#loader",
       {
