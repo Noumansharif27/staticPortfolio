@@ -10,16 +10,6 @@
   transition: all cubic-bezier(0, 0.89, 0.41, 1) 0.5s;
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  overflow-x: hidden;
-  position: relative;
-  background-color: #fcfaf8;
-}
-
 :root {
   --span-text-color: #14cf93;
   --loader-bg-color: #161618;
@@ -27,6 +17,25 @@ body {
   --primary-text-color: #383838;
   --secondary-text-color: #fff;
   --icon-color: #e6e5e3;
+  --main-bg-color: #fcfaf7;
+  --project-page-bg-color: #fcfaf7;
+}
+
+.dark-mode {
+  --primary-color: #f9f8f7;
+  --primary-text-color: #fffcfc;
+  --secondary-text-color: #e4e0e0;
+  --main-bg-color: #151515;
+  --project-page-bg-color: #282828;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* ::-webkit-scrollbar-thumb {
@@ -130,12 +139,6 @@ body {
   background-color: var(--span-text-color);
 }
 
-#home {
-  width: 100%;
-  height: 250dvh;
-  position: relative;
-}
-
 #nav {
   width: 100%;
   height: 6.3vw;
@@ -195,6 +198,13 @@ body {
 
 #nav a:hover .anchorLine-2 {
   width: 100%;
+}
+
+#home {
+  width: 100%;
+  height: 250dvh;
+  position: relative;
+  background-color: var(--main-bg-color);
 }
 
 #home #content {
@@ -257,7 +267,7 @@ body {
   pointer-events: none;
   overflow: hidden;
   position: relative;
-  background-color: #fcfaf8;
+  background-color: var(--main-bg-color);
 }
 
 #icon {
@@ -316,6 +326,7 @@ body {
 #project-images #about-para p {
   font-size: 2.2vw;
   position: absolute;
+  color: var(--primary-text-color);
 }
 
 #about-para .para {
@@ -326,6 +337,7 @@ body {
   overflow: hidden;
   height: 2.3vw;
   width: 20vw;
+  color: var(--primary-text-color);
 }
 
 .para p {
@@ -342,10 +354,6 @@ body {
 
 #about-para p span {
   color: var(--span-text-color);
-}
-
-.media-screen-para {
-  display: none;
 }
 
 #cards {
@@ -440,6 +448,7 @@ body {
   line-height: 1vw;
   opacity: 0.5;
   position: absolute;
+  color: var(--primary-text-color);
 }
 
 #technologies-para {
@@ -447,6 +456,7 @@ body {
   font-size: 1.5vw;
   margin-top: 2.5rem;
   position: relative;
+  color: var(--primary-text-color);
 }
 
 #svg-line-affect {
@@ -456,7 +466,9 @@ body {
   justify-content: center;
   align-items: flex-start;
   z-index: 88;
-  /* background-color: #14cf93; */
+  stroke: var(--primary-text-color);
+
+  background-color: var(--project-page-bg-color);
 }
 
 path {
@@ -466,7 +478,7 @@ path {
 #page-1 {
   /* height: 300vh; */
   width: 100%;
-  /* background-color: tomato; */
+  background-color: var(--project-page-bg-color);
 }
 
 #page-1-title {
@@ -485,6 +497,7 @@ path {
   transform-origin: 0 50%;
   transform: rotate(30deg);
   top: 80%;
+  color: var(--primary-text-color);
 }
 
 #page-1-title h2 sub {
@@ -1162,4 +1175,16 @@ footer a {
 
 .footer-slogen p {
   display: inline-block;
+}
+
+.media-screen-para {
+  display: none;
+}
+
+.media-about-para {
+  display: none;
+}
+
+.media-screen-contact {
+  display: none;
 }
