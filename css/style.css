@@ -524,6 +524,10 @@ path {
   /* background-color: #14cf93; */
 }
 
+.project-1 .project-details {
+  bottom: 27%;
+}
+
 .project-1 img {
   width: 100%;
   height: 100%;
