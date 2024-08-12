@@ -65,6 +65,23 @@ function reveal() {
   });
 }
 
+function theme() {
+  let body = document.querySelector("#body");
+
+  function setTheme(mode) {
+    body.classList.remove("light", "dark-mode"); // Remove existing classes
+    body.classList.add(mode); // Add the new class
+  }
+
+  // Check for system preference (prefers-color-scheme)
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  // Apply initial theme based on system preference
+  setTheme(prefersDark ? "dark-mode" : "light");
+}
+
+theme();
+
 // loader an dupper home page animation
 function animatinOne() {
   const tl = gsap.timeline();
@@ -72,8 +89,8 @@ function animatinOne() {
   tl.to(
     ".loader-parent .child-span-1 ",
     {
-      delay: 0.3,
       left: "70.5%",
+      top: 0,
       opacity: 1,
       stagger: 0.5,
       duration: 1,
@@ -84,7 +101,6 @@ function animatinOne() {
     .to(
       ".loader-parent .child-span-2 ",
       {
-        delay: 0.5,
         left: "83.5%",
         opacity: 1,
         stagger: 0.5,
@@ -96,7 +112,6 @@ function animatinOne() {
     .to(
       ".loader-parent .child-span-3 ",
       {
-        delay: 0.8,
         left: "95%",
         opacity: 1,
         stagger: 0.5,
@@ -136,7 +151,16 @@ function animatinOne() {
       "loader-hidden-animation"
     )
     .to(
-      "#loader",
+      ".reveal",
+      {
+        y: "-190%",
+        duration: 1.5,
+        ease: "Expo.easeInOut",
+      },
+      "loader-hidden-animation"
+    )
+    .to(
+      ".loader",
       {
         height: 0,
         duration: 0.7,
@@ -144,19 +168,24 @@ function animatinOne() {
       },
       "a"
     )
-    .to("#green-div", {
+    .to(".green-div", {
       height: 0,
       duration: 1,
       delay: -0.6,
       ease: "Power4.easeOut",
+      onComplete: () => {
+        divremover();
+      },
     })
     .to(nav, {
       opacity: 1,
       delay: -1.5,
+      ease: "Expo.easeInOut",
     })
     .to(
       "#content-row-2 h2",
       {
+        delay: -0.6,
         rotateX: 0,
         opacity: 1,
         duration: 1,
@@ -166,6 +195,7 @@ function animatinOne() {
     .to(
       "#content-row-1 h2",
       {
+        delay: -0.6,
         rotateX: 0,
         opacity: 1,
         duration: 1,
@@ -176,8 +206,8 @@ function animatinOne() {
       "#content-para-1",
       {
         top: "13%",
-        duration: 2,
-        delay: 0.3,
+        duration: 1.3,
+        delay: 0.15,
       },
       "content"
     )
@@ -185,8 +215,8 @@ function animatinOne() {
       "#content-para-2",
       {
         top: "13%",
-        duration: 2,
-        delay: 0.3,
+        duration: 1.3,
+        delay: 0.15,
         onComplete: () => {
           animationtwo();
         },
@@ -197,11 +227,15 @@ function animatinOne() {
 
 // Home page's card and para animation
 function animationtwo() {
+  gsap.from("#content", {
+    width: "70%",
+    duration: 0.1,
+  });
   gsap.to(
     ".para p",
     {
       y: 0,
-      duration: 0.4,
+      duration: 0.18,
       stagger: 0.3,
       scrollTrigger: {
         trigger: ".para",
@@ -365,79 +399,79 @@ function projectCardAnimations() {
   }
 
   // project preview affect
-  function projectPreviewAffect() {
-    let projectCards = document.querySelectorAll(".project-card");
-    projectCards.forEach((currentCard) => {
-      currentCard.addEventListener("mousemove", (details) => {
-        console.log(details);
-        let projectPreview = details.target.querySelector(".project-preview");
-        projectPreview.style.opacity = 1;
-        // projectPreview.style.transform = `translate(${
-        //   details.clientX - currentCard.offsetLeft
-        // }px, ${details.clientY - currentCard.offsetTop}px)`;
-        projectPreview.style.transform = `translate(${details.clientX - 100}, ${
-          details.clientY - 100
-        })`;
+  // function projectPreviewAffect() {
+  //   let projectCards = document.querySelectorAll(".project-card");
+  //   projectCards.forEach((currentCard) => {
+  //     currentCard.addEventListener("mousemove", (details) => {
+  //       console.log(details);
+  //       let projectPreview = details.target.querySelector(".project-preview");
+  //       projectPreview.style.opacity = 1;
+  //       // projectPreview.style.transform = `translate(${
+  //       //   details.clientX - currentCard.offsetLeft
+  //       // }px, ${details.clientY - currentCard.offsetTop}px)`;
+  //       projectPreview.style.transform = `translate(${details.clientX - 100}, ${
+  //         details.clientY - 100
+  //       })`;
 
-        // let Xaxis = `${details.clientX - 100}px`;
-        // let Yaxis = `${details.clientY - 100}px`;
+  //       // let Xaxis = `${details.clientX - 100}px`;
+  //       // let Yaxis = `${details.clientY - 100}px`;
 
-        gsap.to(
-          projectPreview,
-          {
-            opacity: 1,
-            x: Xaxis,
-            y: Yaxis,
-            ease: "Power3.easeOut",
-            duration: 1,
-          },
-          "a"
-        );
-        // gsap.to(
-        //   cursorSeat,
-        //   {
-        //     x: Xaxis,
-        //     y: Yaxis,
-        //     ease: "Power3.easeOut",
-        //     duration: 1,
-        //   },
-        //   "a"
-        // );
-      });
+  //       gsap.to(
+  //         projectPreview,
+  //         {
+  //           opacity: 1,
+  //           x: Xaxis,
+  //           y: Yaxis,
+  //           ease: "Power3.easeOut",
+  //           duration: 1,
+  //         },
+  //         "a"
+  //       );
+  //       // gsap.to(
+  //       //   cursorSeat,
+  //       //   {
+  //       //     x: Xaxis,
+  //       //     y: Yaxis,
+  //       //     ease: "Power3.easeOut",
+  //       //     duration: 1,
+  //       //   },
+  //       //   "a"
+  //       // );
+  //     });
 
-      currentCard.addEventListener("mouseleave", (details) => {
-        let projectPreview = details.target.querySelector(".project-preview");
-        projectPreview.style.opacity = "0";
+  //     currentCard.addEventListener("mouseleave", (details) => {
+  //       let projectPreview = details.target.querySelector(".project-preview");
+  //       projectPreview.style.opacity = "0";
 
-        gsap.to(
-          projectPreview,
-          {
-            opacity: 0,
-            x: xaxis,
-            y: Yaxis,
-            ease: "Power3.easeOut",
-            duration: 1,
-          },
-          "a"
-        );
-        gsap.to(
-          cursorSeat,
-          {
-            x: xaxis,
-            y: Yaxis,
-            ease: "Power3.easeOut",
-            duration: 1,
-          },
-          "a"
-        );
-      });
-    });
-  }
+  //       gsap.to(
+  //         projectPreview,
+  //         {
+  //           opacity: 0,
+  //           x: xaxis,
+  //           y: Yaxis,
+  //           ease: "Power3.easeOut",
+  //           duration: 1,
+  //         },
+  //         "a"
+  //       );
+  //       gsap.to(
+  //         cursorSeat,
+  //         {
+  //           x: xaxis,
+  //           y: Yaxis,
+  //           ease: "Power3.easeOut",
+  //           duration: 1,
+  //         },
+  //         "a"
+  //       );
+  //     });
+  //   });
+  // }
 
   function cardMovingAnimation() {}
 
   projectsCardsHover();
-  // projectPreviewAffect();
+  // projectPreviewAffect(); // this animation is not working as well by some reason
   cardMovingAnimation();
 }
 
@@ -523,13 +557,15 @@ function footerAnimation() {
     // animating the footer hero heading
     gsap.to("#footer-heading h2 .footer-child-span", {
       y: "-17%",
+      delay: -1,
+      duration: 0.08,
       stagger: 0.3,
       ease: "Power4.easeOut",
       scrollTrigger: {
         trigger: "#footer-heading",
         scroller: ".scrollContainer",
-        start: "-500% 50%",
-        end: "-400% bottom",
+        start: "-500% 50%%",
+        end: "-400% 150%",
       },
     });
   }
@@ -543,6 +579,20 @@ function footerAnimation() {
     projectCredits.addEventListener("click", () => {
       technologyDetails.style.opacity = 1;
       footerSloge.style.zIndex = 2;
+
+      gsap.to(
+        ".footer-project-details",
+        {
+          top: 0,
+          rotate: 0,
+          opacity: 1,
+          ease: "Expo.easeInOut",
+          stagger: 0.2,
+          duration: 0.7,
+          delay: -0.38,
+        },
+        "techAnimation"
+      );
     });
 
     // get the opacity=1; return after the selected element is clicked

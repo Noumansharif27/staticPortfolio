@@ -12,8 +12,24 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/responsive.css" />
   </head>
-  <body class="dark-mode">
-    <div class="scrollContainer">
+  <body id="body">
+    <!-- ========loader========= -->
+    <section class="loader">
+      <div id="upper-text">
+        <h3 class="reveal">DESIGN PORTFOLIO &copy; 2024</h3>
+      </div>
+
+      <span class="loader-parent">
+        <span class="child-span-1">Nouman</span>
+        <span class="green child-span-2">Sharif</span>
+        <span class="child-span-3">is</span>
+        <span class="child-span-4">a</span>
+      </span>
+    </section>
+
+    <!-- ==========greenScreen============ -->
+    <section class="green-div"></section>
+    <section class="scrollContainer">
       <header>
         <!-- =============Nav============== -->
         <nav id="nav">
@@ -43,23 +59,6 @@
       </header>
 
       <main>
-        <!-- ========loader========= -->
-        <section id="loader">
-          <div id="upper-text">
-            <h3 class="reveal">DESIGN PORTFOLIO &copy; 2024</h3>
-          </div>
-
-          <span class="loader-parent">
-            <span class="child-span-1">Nouman</span>
-            <span class="green child-span-2">Sharif</span>
-            <span class="child-span-3">is</span>
-            <span class="child-span-4">a</span>
-          </span>
-        </section>
-
-        <!-- ==========greenScreen============ -->
-        <section id="green-div"></section>
-
         <!-- ============mainPage============ -->
         <section id="home">
           <div id="content">
@@ -144,6 +143,8 @@
             <img src="./assets/medis-screen-contact-img.svg" alt="" />
             <a href="mailto: noumansharifgul@gmail.com">CONTACT</a>
           </div>
+
+          <div class="color-mixer"></div>
         </section>
 
         <!-- =============svg-line-affect============= -->
@@ -498,15 +499,28 @@
         <div class="footer-container">
           <div id="footer-heading">
             <h2>
-              <span class="footer-parent-span"
-                ><span class="footer-child-span">LET'S TALK</span></span
-              >
+              <span class="footer-parent-span">
+                <span class="footer-child-span">LET'S TALK</span>
+              </span>
+
               <span class="footer-parent-span">
                 <span class="footer-child-span">ABOUT THE NEXT</span>
               </span>
 
               <span class="footer-parent-span">
                 <span class="footer-child-span">BIG THING</span>
+              </span>
+            </h2>
+
+            <h2 class="media-screen-footer-header">
+              <span class="footer-parent-span">
+                <span class="footer-child-span"> Let's </span>
+              </span>
+
+              <span class="footer-parent-span">
+                <span class="footer-child-span">
+                  Co<span class="green">nn</span>ect</span
+                >
               </span>
             </h2>
           </div>
@@ -648,8 +662,10 @@
             <img src="./assets/close-btn.svg" alt="close-btn" />
           </div>
         </div>
+
+        <div class="footer-color-mixer"></div>
       </footer>
-    </div>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
     <script
