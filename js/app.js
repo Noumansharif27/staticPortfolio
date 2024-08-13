@@ -555,7 +555,7 @@ function footerAnimation() {
     let footerHeading = document.querySelector("#footer-heading h2");
 
     // animating the footer hero heading
-    gsap.to("#footer-heading h2 .footer-child-span", {
+    gsap.to("#footer-heading .full-screen-footer-heading .footer-child-span", {
       y: "-17%",
       delay: -1,
       duration: 0.08,
@@ -564,8 +564,23 @@ function footerAnimation() {
       scrollTrigger: {
         trigger: "#footer-heading",
         scroller: ".scrollContainer",
-        start: "-500% 50%%",
-        end: "-400% 150%",
+        start: "-420% 50%%",
+        end: "-380% 100%",
+      },
+    });
+
+    // animating the footer hero heading
+    gsap.to("#footer-heading .media-screen-footer-header .footer-child-span", {
+      y: "-17%",
+      delay: -1,
+      duration: 0.08,
+      stagger: 0.3,
+      ease: "Power4.easeOut",
+      scrollTrigger: {
+        trigger: "#footer-heading",
+        scroller: ".scrollContainer",
+        start: "-565% 50%%",
+        end: "-400% 100%",
       },
     });
   }
