@@ -82,26 +82,15 @@ function theme() {
 
 theme();
 
-// loader an dupper home page animation
-function animatinOne() {
-  const tl = gsap.timeline();
+window.addEventListener("load", () => {
+  function animatinOne() {
+    const tl = gsap.timeline();
 
-  tl.to(
-    ".loader-parent .child-span-1 ",
-    {
-      left: "70.5%",
-      top: 0,
-      opacity: 1,
-      stagger: 0.5,
-      duration: 1,
-      ease: "Expo.easeInOut",
-    },
-    "loader-animation"
-  )
-    .to(
-      ".loader-parent .child-span-2 ",
+    tl.to(
+      ".loader-parent .child-span-1 ",
       {
-        left: "83.5%",
+        left: "70.5%",
+        top: 0,
         opacity: 1,
         stagger: 0.5,
         duration: 1,
@@ -109,121 +98,136 @@ function animatinOne() {
       },
       "loader-animation"
     )
-    .to(
-      ".loader-parent .child-span-3 ",
-      {
-        left: "95%",
-        opacity: 1,
-        stagger: 0.5,
-        duration: 1,
-        ease: "Expo.easeInOut",
-      },
-      "loader-animation"
-    )
-    .to(
-      ".loader-parent .child-span-4 ",
-      {
-        delay: 0.8,
-        left: "98%",
-        opacity: 1,
-        stagger: 0.5,
-        duration: 1,
-        ease: "Expo.easeInOut",
-      },
-      "loader-animation"
-    )
-    .to(
-      ".loader-parent span",
-      {
-        y: "-150%",
-        duration: 2,
-        ease: "Expo.easeInOut",
-      },
-      "loader-hidden-animation"
-    )
-    .to(
-      ".childSpan",
-      {
-        y: "-100%",
-        duration: 1.5,
-        ease: "Expo.easeInOut",
-      },
-      "loader-hidden-animation"
-    )
-    .to(
-      ".reveal",
-      {
-        y: "-190%",
-        duration: 1.5,
-        ease: "Expo.easeInOut",
-      },
-      "loader-hidden-animation"
-    )
-    .to(
-      ".loader",
-      {
-        height: 0,
-        duration: 0.7,
-        ease: "Power4.easeOut",
-      },
-      "a"
-    )
-    .to(".green-div", {
-      height: 0,
-      duration: 1,
-      delay: -0.6,
-      ease: "Power4.easeOut",
-      onComplete: () => {
-        divremover();
-      },
-    })
-    .to(nav, {
-      opacity: 1,
-      delay: -1.5,
-      ease: "Expo.easeInOut",
-    })
-    .to(
-      "#content-row-2 h2",
-      {
-        delay: -0.6,
-        rotateX: 0,
-        opacity: 1,
-        duration: 1,
-      },
-      "content"
-    )
-    .to(
-      "#content-row-1 h2",
-      {
-        delay: -0.6,
-        rotateX: 0,
-        opacity: 1,
-        duration: 1,
-      },
-      "content"
-    )
-    .to(
-      "#content-para-1",
-      {
-        top: "13%",
-        duration: 1.3,
-        delay: 0.15,
-      },
-      "content"
-    )
-    .to(
-      "#content-para-2",
-      {
-        top: "13%",
-        duration: 1.3,
-        delay: 0.15,
-        onComplete: () => {
-          animationtwo();
+      .to(
+        ".loader-parent .child-span-2 ",
+        {
+          left: "83.5%",
+          opacity: 1,
+          stagger: 0.5,
+          duration: 1,
+          ease: "Expo.easeInOut",
         },
-      },
-      "content"
-    );
-}
+        "loader-animation"
+      )
+      .to(
+        ".loader-parent .child-span-3 ",
+        {
+          left: "95%",
+          opacity: 1,
+          stagger: 0.5,
+          duration: 1,
+          ease: "Expo.easeInOut",
+        },
+        "loader-animation"
+      )
+      .to(
+        ".loader-parent .child-span-4 ",
+        {
+          delay: 0.8,
+          left: "98%",
+          opacity: 1,
+          stagger: 0.5,
+          duration: 1,
+          ease: "Expo.easeInOut",
+        },
+        "loader-animation"
+      )
+      .to(
+        ".loader-parent span",
+        {
+          y: "-150%",
+          duration: 2,
+          ease: "Expo.easeInOut",
+        },
+        "loader-hidden-animation"
+      )
+      .to(
+        ".childSpan",
+        {
+          y: "-100%",
+          duration: 1.5,
+          ease: "Expo.easeInOut",
+        },
+        "loader-hidden-animation"
+      )
+      .to(
+        ".reveal",
+        {
+          y: "-190%",
+          duration: 1.5,
+          ease: "Expo.easeInOut",
+        },
+        "loader-hidden-animation"
+      )
+      .to(
+        ".loader",
+        {
+          height: 0,
+          duration: 0.7,
+          ease: "Power4.easeOut",
+        },
+        "a"
+      )
+      .to(".green-div", {
+        height: 0,
+        duration: 1,
+        delay: -0.6,
+        ease: "Power4.easeOut",
+        onComplete: () => {
+          divremover();
+        },
+      })
+      .to(nav, {
+        opacity: 1,
+        delay: -1.5,
+        ease: "Expo.easeInOut",
+      })
+      .to(
+        "#content-row-2 h2",
+        {
+          delay: -0.6,
+          rotateX: 0,
+          opacity: 1,
+          duration: 1,
+        },
+        "content"
+      )
+      .to(
+        "#content-row-1 h2",
+        {
+          delay: -0.6,
+          rotateX: 0,
+          opacity: 1,
+          duration: 1,
+        },
+        "content"
+      )
+      .to(
+        "#content-para-1",
+        {
+          top: "13%",
+          duration: 1.3,
+          delay: 0.15,
+        },
+        "content"
+      )
+      .to(
+        "#content-para-2",
+        {
+          top: "13%",
+          duration: 1.3,
+          delay: 0.15,
+          onComplete: () => {
+            animationtwo();
+          },
+        },
+        "content"
+      );
+  }
+
+  animatinOne();
+});
+// loader an dupper home page animation
 
 // Home page's card and para animation
 function animationtwo() {
@@ -625,7 +629,6 @@ function footerAnimation() {
 }
 
 reveal();
-animatinOne();
 pageOneSVG();
 projectCardAnimations();
 projectPageAnimation();
