@@ -551,9 +551,6 @@
     width: 90%;
     border-radius: 0.5rem;
     overflow: hidden;
-    background-color: #83e7c7;
-    position: absolute;
-    transition: all cubic-bezier(0, 0.89, 0.41, 1) 0.5s;
   }
 
   .card img {
