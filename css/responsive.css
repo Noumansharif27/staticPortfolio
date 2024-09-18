@@ -1240,7 +1240,6 @@
     position: absolute;
     right: 5%;
     top: 150%;
-    /* transform: translate(0, -50%); */
     display: flex;
     align-items: center;
     justify-content: center;
