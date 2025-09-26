@@ -205,7 +205,7 @@ window.addEventListener("load", () => {
       .to(
         "#content-para-1",
         {
-          top: "13%",
+          top: "15%",
           duration: 1.3,
           delay: 0.15,
         },
@@ -214,7 +214,7 @@ window.addEventListener("load", () => {
       .to(
         "#content-para-2",
         {
-          top: "13%",
+          top: "15%",
           duration: 1.3,
           delay: 0.15,
           onComplete: () => {
